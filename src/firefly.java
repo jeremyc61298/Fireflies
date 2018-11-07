@@ -51,12 +51,13 @@ public class firefly {
         }
 
         public Point catchFirefly() {
+            // TODO: Finish this function using the distance and slope formula's
 
             return new Point(-1, -1);
         }
 
         public void reset() {
-
+            fireflyLocations.clear();
         }
     }
 
@@ -69,8 +70,10 @@ public class firefly {
         while (cs.readChaseScenario(fin)) {
             Point captureLocation = cs.catchFirefly();
             fout.print(captureLocation.toString());
-
             cs.reset();
         }
+
+        fin.close();
+        fout.close();
     }
 }
