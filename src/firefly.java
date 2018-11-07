@@ -12,6 +12,6 @@ public class firefly {
     public static void main(String[] args) throws IOException {
         Scanner fin = new Scanner("firefly.in");
         PrintWriter fout = new PrintWriter("firefly.out");
-
+        // TODO: Everything
     }
 }
