@@ -34,11 +34,8 @@ public class firefly {
         private Point chaserLocation = new Point();
         private List<Point> fireflyLocations = new LinkedList<>();
 
-        public boolean readChaseScenario(Scanner fin) {
-            maxDistance = fin.nextDouble();
-            if (maxDistance == 0) {
-                return false;
-            }
+        public void readChaseScenario(Scanner fin, double max) {
+            maxDistance = max;
             chaserLocation.x = fin.nextDouble();
             chaserLocation.y = fin.nextDouble();
 
@@ -47,7 +44,6 @@ public class firefly {
                 fireflyLocations.add(temp);
                 temp = new Point(fin.nextDouble(), fin.nextDouble());
             }
-            return true;
         }
 
         public Point catchFirefly() {
@@ -67,10 +63,17 @@ public class firefly {
         PrintWriter fout = new PrintWriter("firefly.out");
 
         ChaseScenario cs = new ChaseScenario();
-        while (cs.readChaseScenario(fin)) {
+        double maxDistance = fin.nextDouble();
+        while (maxDistance != 0) {
+            cs.readChaseScenario(fin, maxDistance);
             Point captureLocation = cs.catchFirefly();
             fout.print(captureLocation.toString());
             cs.reset();
+
+            // Print the endline is there is another scenario
+            maxDistance = fin.nextDouble();
+            if (maxDistance != 0)
+                fout.println();
         }
 
         fin.close();
