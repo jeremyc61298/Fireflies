@@ -9,9 +9,34 @@ import java.util.Scanner;
 
 public class firefly {
 
+    private static class Point {
+        double x;
+        double y;
+    }
+
+    private static class ChaseScenario {
+
+        private int maxDistance;
+
+        public boolean readChaseScenario(Scanner fin) {
+            maxDistance = fin.nextInt();
+            if (maxDistance == 0) {
+                return false;
+            } else {
+
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) throws IOException {
         Scanner fin = new Scanner("firefly.in");
         PrintWriter fout = new PrintWriter("firefly.out");
-        // TODO: Everything, all of it
+
+        ChaseScenario cs = new ChaseScenario();
+        while (cs.readChaseScenario(fin) != false) {
+
+        }
     }
 }
